@@ -232,6 +232,20 @@ function printResult() {
           margin-top: 40px;
           margin-left: auto;
         }
+        .signature-box {
+  margin: 60px 40px 0 0;
+  text-align: right;
+  font-size: 15px;
+}
+
+.signature-img {
+  width: 180px;      /* তোমার PNG অনুযায়ী ঠিক স্কেল */
+  height: auto;
+  display: block;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: 0;
+}
         footer {
           margin-top: 80px;
           text-align: center;
