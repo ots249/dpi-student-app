@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>স্টুডেন্ট তথ্য অনুসন্ধান</title>
+  <link rel="manifest" href="manifest.json" />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bubbles">
+  <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="container">
+  <h2>স্টুডেন্ট তথ্য অনুসন্ধান</h2>
+  
+  <input
+  type="text"
+  id="searchInput"
+  placeholder="Name বা Class/BTEB Roll লিখুন"
+  />
+  <button id="searchBtn"  class="animated-btn" onclick="searchStudent()"><i class="fas fa-search"></i> সার্চ করুন</button>
+  <div id="result" class="result-box"></div>
+  <br>
+  <button id="printBtn" class="animated-btn" style="display:none;" onclick="printResult()">
+  <i class="fas fa-print"></i> প্রিন্ট করুন
+  </button>
+  </div>
+  <script src="script.js"></script>
+  <script>
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./service-worker.js')
+  .then(() => console.log('Service Worker Registered'))
+  .catch(err => console.error('Service Worker registration failed:', err));
+  }
+  </script>
+  <footer class="footer">
+  তৈরি করেছেন: <strong>Oahid Towsif Shamol</strong><br />
+  @ots249 &copy; 2025 All rights reserved.
+  </footer>
+</body>
+</html>
