@@ -203,6 +203,11 @@ function printResult() {
         .page-break {
           page-break-after: always;
         }
+        @media print {
+  .student-card {
+    page-break-inside: avoid;
+  }
+}
         .info-row {
           display: flex;
           justify-content: space-between;
@@ -237,11 +242,11 @@ function printResult() {
         .signature-line {
           border-top: 1px solid #000;
           width: 200px;
-          margin-top: 40px;
+          margin-top: 10px;
           margin-left: auto;
         }
         footer {
-          margin-top: 30px;
+          margin-top: 50px;
           text-align: center;
           font-size: 13px;
           color: #888;
