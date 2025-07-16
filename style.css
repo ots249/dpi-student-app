@@ -1,0 +1,325 @@
+body {
+  font-family: 'SolaimanLipi', sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+  animation: gradientBG 15s ease infinite;
+  background: linear-gradient(-45deg, #d1f7ff, #e6f9f0, #f2fff0, #d1f7ff);
+  background-size: 400% 400%;
+  min-height: 100vh;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  position:relative;
+}
+
+.input-area {
+  position: relative;
+}
+
+
+h2 {
+  color: #1b5e20;
+  margin-bottom: 20px;
+}
+
+#searchInput {
+  padding: 12px;
+  width: 70%;
+  font-size: 16px;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+}
+
+#searchInput:focus {
+  border-color: #2e7d32;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+button {
+  padding: 12px 20px;
+  margin-left: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #388e3c;
+}
+
+.result-box {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-left: 5px solid #4caf50;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.4s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+  }
+  
+ 
+
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e6f9f0;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+  font-size: 16px;
+}
+
+.info-key {
+  font-weight: bold;
+  color: #1b5e20;
+  flex: 1;
+  text-align: left; /* 🔁 আগে center ছিলো, এখন বামে */
+}
+
+.info-value {
+  color: #333;
+  flex: 1;
+  text-align: center; /* ✅ ডান পাশের তথ্যগুলো এখন সেন্টার হবে */
+}
+
+.card p {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.card strong {
+  color: #1b5e20;
+  display: inline-block;
+  width: 140px;
+}
+
+@media (max-width: 480px) {
+  input[type="number"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #e6f9f0;
+  color: #1b5e20;
+  font-size: 14px;
+  text-align: center;
+  padding: 10px 5px;
+  border-top: 1px solid #b2dfdb;
+  box-shadow: 0 -2px 8px rgba(0, 150, 136, 0.2);
+  z-index: 999;
+}
+
+.footer strong {
+  color: #00796b;
+}
+
+.container {
+  padding-bottom: 60px;
+}
+
+.animated-btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.5s ease;
+}
+
+.animated-btn:hover::after {
+  left: 100%;
+}
+
+.animated-btn:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 100, 0, 0.3);
+}
+
+.bubbles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.bubbles span {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: rgba(76, 175, 80, 0.2);
+  bottom: -50px;
+  border-radius: 50%;
+  animation: rise 20s infinite ease-in;
+}
+
+.bubbles span:nth-child(1) {
+  left: 10%;
+  animation-duration: 15s;
+  width: 15px;
+  height: 15px;
+}
+.bubbles span:nth-child(2) {
+  left: 25%;
+  animation-duration: 18s;
+}
+.bubbles span:nth-child(3) {
+  left: 45%;
+  animation-duration: 12s;
+}
+.bubbles span:nth-child(4) {
+  left: 65%;
+  animation-duration: 16s;
+  width: 12px;
+  height: 12px;
+}
+.bubbles span:nth-child(5) {
+  left: 80%;
+  animation-duration: 20s;
+  width: 18px;
+  height: 18px;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-1000px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.student-card.page-break {
+  page-break-after: always;
+}
+
+.suggestion-box {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #c8e6c9;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  background: #ffffff;
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+  scrollbar-width: thin;
+  scrollbar-color: #81c784 #f0f0f0;
+}
+
+.suggestion-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.suggestion-box::-webkit-scrollbar-thumb {
+  background-color: #81c784;
+  border-radius: 10px;
+}
+
+.suggestion-box li {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.suggestion-box li:hover {
+  background-color: #e0f2f1;
+  color: #00695c;
+  font-weight: 500;
+}
+
+.suggestion-box marrk {
+  background-color:white
+  color: #1b5e20;
+  font-weight: bold;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+@media (max-width: 480px) {
+  .suggestion-box {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  #searchInput {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
+
+.suggestion-box {
+  scroll-behavior: smooth;
+}
+
+.signature-box {
+  margin: 60px 40px 0 0;
+  text-align: right;
+  font-size: 15px;
+}
+
