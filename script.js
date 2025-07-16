@@ -167,11 +167,10 @@ function exportResultAsImage() {
     return;
   }
 
-  // Student name খুঁজে বের করো
+  // Student name বের করো
+  let studentName = "Student";
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = resultElement.innerHTML;
-
-  let studentName = "Student";
   const infoRows = tempDiv.querySelectorAll(".info-row");
   infoRows.forEach(row => {
     const key = row.querySelector(".info-key")?.textContent?.trim();
@@ -180,7 +179,27 @@ function exportResultAsImage() {
     }
   });
 
-  html2canvas(resultElement).then(canvas => {
+  // Layout তৈরি
+  const exportArea = document.getElementById("exportArea");
+  exportArea.innerHTML = `
+    <div style="font-family:'SolaimanLipi', sans-serif; background:white; color:#111; padding:20px; max-width: 900px; margin: auto; border:2px solid #4caf50; border-radius:12px;">
+      <h2 style="text-align:center; color:#1b5e20;">Information of <b>${studentName}</b></h2>
+      <p style="text-align:center; font-size:13px; color:#555;">Export Date: ${new Date().toLocaleString('en-BD')}</p>
+      <div style="margin:20px 0;">${resultElement.innerHTML}</div>
+      <div style="margin-top: 40px; text-align:right;">
+        <img src="signature.png" style="width:140px; display:block; margin-left:auto; margin-bottom:5px;" />
+        <div style="width:200px; border-top:1px solid #000; margin-left:auto;"></div>
+        <div>Authorized Signature</div>
+      </div>
+      <div style="margin-top:30px; text-align:center; font-size:13px; color:#888;">
+        This report was generated automatically.<br/>
+        Developer: <strong>Oahid Towsif Shamol</strong> — &copy; 2021–2025
+      </div>
+    </div>
+  `;
+
+  // Export image
+  html2canvas(exportArea).then(canvas => {
     const link = document.createElement("a");
     link.download = `${studentName.replace(/\s+/g, "_")}_info.png`;
     link.href = canvas.toDataURL("image/png");
