@@ -199,12 +199,17 @@ function exportResultAsImage() {
   `;
 
   // Export image
-  html2canvas(exportArea).then(canvas => {
-    const link = document.createElement("a");
-    link.download = `${studentName.replace(/\s+/g, "_")}_info.png`;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
+  exportArea.style.display = "block";
+  
+  setTimeout(() => {
+  html2canvas(exportArea, { scale: 2 }).then(canvas => {
+  const link = document.createElement("a");
+  link.download = `${studentName.replace(/\s+/g, "_")}_info.png`;
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+  exportArea.style.display = "none";
   });
+  }, 300); // 300ms delay to allow layout render
 }
 
 // প্রিন্ট ফাংশন
