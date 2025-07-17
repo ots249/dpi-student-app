@@ -182,14 +182,14 @@ function exportResultAsImage() {
   // Layout তৈরি
   const exportArea = document.getElementById("exportArea");
   exportArea.innerHTML = `
-    <div style="font-family:'SolaimanLipi', sans-serif; background:white; color:#111; padding:20px; max-width: 900px; margin: auto; border:2px solid #4caf50; border-radius:12px;">
+    <div id="imageExportLayout" style="font-family:'SolaimanLipi', sans-serif; background:white; color:#111; padding:20px; width:850px; margin:auto; border:2px solid #4caf50; border-radius:12px;">
       <h2 style="text-align:center; color:#1b5e20;">Information of <b>${studentName}</b></h2>
       <p style="text-align:center; font-size:13px; color:#555;">Export Date: ${new Date().toLocaleString('en-BD')}</p>
-      <div style="margin:20px 0;">${resultElement.innerHTML}</div>
+      <div>${resultElement.innerHTML}</div>
       <div style="margin-top: 40px; text-align:right;">
-        <img src="signature.png" style="width:140px; display:block; margin-left:auto; margin-bottom:5px;" />
+        <img src="signature.png" alt="Signature" style="width:140px; display:block; margin-left:auto; margin-bottom:5px;" />
         <div style="width:200px; border-top:1px solid #000; margin-left:auto;"></div>
-        <div>Authorized Signature</div>
+        <div style="margin-top:4px;">Authorized Signature</div>
       </div>
       <div style="margin-top:30px; text-align:center; font-size:13px; color:#888;">
         This report was generated automatically.<br/>
@@ -198,18 +198,28 @@ function exportResultAsImage() {
     </div>
   `;
 
-  // Export image
   exportArea.style.display = "block";
-  
+
+  // ⏱️ Ensure DOM fully rendered before capture
   setTimeout(() => {
-  html2canvas(exportArea, { scale: 2 }).then(canvas => {
-  const link = document.createElement("a");
-  link.download = `${studentName.replace(/\s+/g, "_")}_info.png`;
-  link.href = canvas.toDataURL("image/png");
-  link.click();
-  exportArea.style.display = "none";
-  });
-  }, 300); // 300ms delay to allow layout render
+    const layoutDiv = document.getElementById("imageExportLayout");
+
+    html2canvas(layoutDiv, {
+      backgroundColor: "#ffffff",  // Ensure white background
+      useCORS: true,               // Needed for loading external images like PNG signature
+      scale: 2                     // For high resolution output
+    }).then(canvas => {
+      const link = document.createElement("a");
+      link.download = `${studentName.replace(/\s+/g, "_")}_info.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+
+      exportArea.style.display = "none"; // hide after export
+    }).catch(err => {
+      alert("❌ Export failed. PNG signature path may be invalid.");
+      console.error(err);
+    });
+  }, 500); // wait a bit to render DOM
 }
 
 // প্রিন্ট ফাংশন
